@@ -6,59 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FaithMatch – 유럽 한인 2세 크리스천 매칭</title>
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      --clr-bg:#ffffff;
-      --clr-text:#222;
-      --clr-sub:#364152;
-      --clr-card-bg:#ffffffee;
-      --clr-box:#4461ff;
-      --clr-box-hover:#3249d8;
     }
-    body.dark{
-      --clr-bg:#0f172a;
-      --clr-text:#e2e8f0;
-      --clr-sub:#cbd5e1;
-      --clr-card-bg:#1e293b;
-      --clr-box:#4f8bff;
-      --clr-box-hover:#3973e0;
-    }
-    body{
-      margin:0;display:flex;flex-direction:column;min-height:100vh;
-      background:var(--clr-bg);color:var(--clr-text);transition:background .3s,color .3s;
-    }
-    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);padding:.75rem 1.5rem;z-index:10;}
-    body.dark header{background:rgba(15,23,42,.85);}
-    nav{max-width:1024px;margin:0 auto;display:flex;gap:1.25rem;align-items:center;}
-    nav a{text-decoration:none;color:var(--clr-text);font-weight:600}
-    .spacer{flex:1}
-    .toggle{cursor:pointer;border:none;background:none;font-size:.9rem;font-weight:600;color:var(--clr-text)}
+    body{margin:0;display:flex;flex-direction:column;min-height:100vh;color:#222}
+    header{position:sticky;top:0;background:#ffffffd9;backdrop-filter:saturate(180%) blur(12px);padding:.75rem 1.5rem;z-index:10}
+    nav{max-width:1024px;margin:0 auto;display:flex;gap:1.25rem}
+    nav a{text-decoration:none;color:#444;font-weight:600}
     /* Hero */
     .hero{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:5rem 1.25rem 6rem;background:linear-gradient(135deg,rgba(237,244,255,.7) 0%,rgba(255,255,255,.7) 50%) no-repeat,url("https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80");background-size:cover;background-position:center}
-    body.dark .hero{background:linear-gradient(135deg,rgba(15,23,42,.85) 0%,rgba(15,23,42,.85) 50%),url("https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80");}
     h1{font-size:2.6rem;font-weight:700;margin:0 0 .75rem}
-    p.subtitle{font-size:1.15rem;margin:0 0 2rem;color:var(--clr-sub)}
+    p.subtitle{font-size:1.15rem;margin:0 0 2rem;color:#364152}
     /* Form */
-    form{display:flex;flex-direction:column;gap:.9rem;width:100%;max-width:420px;background:var(--clr-card-bg);padding:1.5rem 1.25rem;border-radius:12px;box-shadow:0 8px 30px -6px rgba(0,0,0,.15);backdrop-filter:blur(4px)}
+    form{display:flex;flex-direction:column;gap:.9rem;width:100%;max-width:420px;background:#ffffffee;padding:1.5rem 1.25rem;border-radius:12px;box-shadow:0 8px 30px -6px rgba(0,0,0,.15);backdrop-filter:blur(4px)}
     input,button{font-size:1rem;padding:.75rem 1rem;border-radius:8px;border:1px solid #cdd7ee}
-    input{background:var(--clr-bg);color:var(--clr-text)}
-    input:focus{outline:none;border-color:var(--clr-box);box-shadow:0 0 0 2px var(--clr-box)33}
-    button{border:none;background:var(--clr-box);color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
-    button:hover{background:var(--clr-box-hover)}
-    .info{margin-top:1rem;font-weight:600;color:var(--clr-text)}
-    /* Social Proof */
-    #social{padding:4rem 1.25rem;background:var(--clr-bg);display:flex;flex-direction:column;align-items:center}
-    #social h2{font-size:1.9rem;margin-bottom:2rem;font-weight:700;color:var(--clr-text)}
+    input:focus{outline:none;border-color:#4461ff;box-shadow:0 0 0 2px #4461ff33}
+    button{border:none;background:#4461ff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+    button:hover{background:#3249d8}
+    .info{margin-top:1rem;font-weight:600;color:#0f172a}
+    /* Social Proof Section */
+    #social{padding:4rem 1.25rem;background:#fdfdfc;display:flex;flex-direction:column;align-items:center}
+    #social h2{font-size:1.9rem;margin-bottom:2rem;font-weight:700;color:#111827}
     .cards{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;max-width:960px}
-    .card{background:var(--clr-card-bg);border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:1.5rem;width:280px;opacity:0;transform:translateY(40px);transition:all .6s ease-out}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:1.5rem;width:280px;opacity:0;transform:translateY(40px);transition:all .6s ease-out}
     .card.show{opacity:1;transform:none}
     .card img{width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:.75rem}
-    .card p{font-size:.95rem;color:var(--clr-sub);margin:0 0 .75rem}
-    .card span{font-weight:600;color:var(--clr-text);font-size:.9rem}
-    footer{text-align:center;padding:1rem;font-size:.85rem;color:var(--clr-sub);background:var(--clr-bg);border-top:1px solid #334155}
+    .card p{font-size:.95rem;color:#374151;margin:0 0 .75rem}
+    .card span{font-weight:600;color:#111827;font-size:.9rem}
+    footer{text-align:center;padding:1rem;font-size:.85rem;color:#667;background:#fafafa;border-top:1px solid #e5e7eb}
     @media(max-width:540px){h1{font-size:1.85rem}p.subtitle{font-size:1rem}}
   </style>
 </head>
@@ -66,148 +45,77 @@
   <header>
     <nav>
       <a href="#">소개</a>
+      <a href="#">작동 방식</a>
       <a href="#social">후기</a>
-      <div class="spacer"></div>
-      <button id="langToggle" class="toggle">EN</button>
-      <button id="themeToggle" class="toggle">🌙</button>
+      <a href="#">FAQ</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1 id="heroTitle">신앙과 문화를 함께 이해하는<br/>파트너를 찾으세요</h1>
-    <p class="subtitle" id="heroSub">유럽 거주 한인 2세 크리스천을 위한 맞춤 매칭 서비스</p>
+    <h1>신앙과 문화를 함께 이해하는<br/>파트너를 찾으세요</h1>
+    <p class="subtitle">유럽 거주 한인 2세 크리스천을 위한 맞춤 매칭 서비스</p>
 
     <form id="waitlist-form">
-      <input type="text" name="name" id="nameInput" placeholder="이름" required>
-      <input type="email" name="email" id="emailInput" placeholder="이메일" required>
+      <input type="text" name="name" placeholder="이름" required>
+      <input type="email" name="email" placeholder="이메일" required>
       <input type="text" name="city" id="city-input" placeholder="현재 도시 (예: London)" required>
-      <button type="submit" id="submitBtn">대기 리스트 합류하기</button>
+      <button type="submit">대기 리스트 합류하기</button>
     </form>
 
     <p id="count-info" class="info" style="display:none;"></p>
-    <p id="thanks" style="display:none;margin-top:1rem;font-weight:600;color:#22c55e;">신청이 완료되었습니다! 곧 소식을 전해드릴게요.</p>
-    <p id="error" style="display:none;margin-top:1rem;font-weight:600;color:#ef4444;">오류가 발생했어요. 잠시 후 다시 시도해주세요.</p>
+    <p id="thanks" style="display:none;margin-top:1rem;font-weight:600;color:#1e3a8a;">신청이 완료되었습니다! 곧 소식을 전해드릴게요.</p>
+    <p id="error" style="display:none;margin-top:1rem;font-weight:600;color:#b91c1c;">오류가 발생했어요. 잠시 후 다시 시도해주세요.</p>
   </section>
 
   <!-- Social Proof -->
   <section id="social">
-    <h2 id="socialTitle">실제 2세 크리스천들의 후기</h2>
+    <h2>실제 2세 크리스천들의 후기</h2>
     <div class="cards">
-      <div class="card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=100&q=80" alt=""><p id="card1">“목사님 인터뷰 덕분에 신앙 이야기부터 자연스럽게 시작됐어요!”</p><span>– Anna · London</span></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1603415527555-d275b88a0281?auto=format&fit=crop&w=100&q=80" alt=""><p id="card2">“첫 3주 만에 같은 교단 배경의 파트너를 만났습니다.”</p><span>– Daniel · Berlin</span></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" alt=""><p id="card3">“리트릿에서 만남이 더 깊어지는 경험, 정말 추천해요.”</p><span>– Grace · Amsterdam</span></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=100&q=80" alt=""><p>“목사님 인터뷰 덕분에 신앙 이야기부터 자연스럽게 시작됐어요!”</p><span>– Anna · London</span></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1603415527555-d275b88a0281?auto=format&fit=crop&w=100&q=80" alt=""><p>“첫 3주 만에 같은 교단 배경의 파트너를 만났습니다.”</p><span>– Daniel · Berlin</span></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" alt=""><p>“내 주변에 아는 한인들이 전부인 줄 알았는데, 숨겨진 보물이 더 있었다니,,, ”</p><span>– Grace · Amsterdam</span></div>
     </div>
   </section>
 
-  <footer>© 2025 FaithMatch</footer>
+  <footer>© 2025 FaithMatch · 개인정보 처리방침</footer>
 
 <script>
 // ====== CONFIG ======
-const ENDPOINT = '%NEXT_PUBLIC_FORM_ENDPOINT%'; // ENV token from Vercel
+const ENDPOINT = '%NEXT_PUBLIC_FORM_ENDPOINT%';    // 템플릿 토큰
 const countsMap = {"London": 42,"Berlin": 28,"Amsterdam": 19,"Paris": 15,"Frankfurt": 11,"Munich": 9,"Barcelona": 7};
-
-// ====== i18n Text ======
-const TEXT = {
-  ko:{
-    heroTitle:'신앙과 문화를 함께 이해하는<br/>파트너를 찾으세요',
-    heroSub:'유럽 거주 한인 2세 크리스천을 위한 맞춤 매칭 서비스',
-    namePh:'이름',
-    emailPh:'이메일',
-    cityPh:'현재 도시 (예: London)',
-    submit:'대기 리스트 합류하기',
-    thanks:'신청이 완료되었습니다! 곧 소식을 전해드릴게요.',
-    error:'오류가 발생했어요. 잠시 후 다시 시도해주세요.',
-    count:(n,city)=>`현재 ${n}명의 2세 크리스천이 ${city}에서 파트너를 기다리고 있어요`,
-    socialTitle:'실제 2세 크리스천들의 후기',
-    card1:'“목사님 인터뷰 덕분에 신앙 이야기부터 자연스럽게 시작됐어요!”',
-    card2:'“첫 3주 만에 같은 교단 배경의 파트너를 만났습니다.”',
-    card3:'“내 주변에 아는 한인들이 전부인 줄 알았는데, 숨겨진 보물이 더 있었다니,,,”',
-    langBtn:'EN'
-  },
-  en:{
-    heroTitle:'Find a partner who shares your faith <br/>and Korean heritage',
-    heroSub:'Tailored matching for 2nd‑gen Korean Christians in Europe',
-    namePh:'Name',
-    emailPh:'Email',
-    cityPh:'Current city (e.g., London)',
-    submit:'Join the waitlist',
-    thanks:'Thanks! We’ll be in touch soon.',
-    error:'Oops, something went wrong. Please try again.',
-    count:(n,city)=>`${n} second‑gen Christians in ${city} are waiting for a partner right now`,
-    socialTitle:'What real 2nd‑gen Christians say',
-    card1:'“The pastor interview helped us start with faith talk naturally!”',
-    card2:'“Met someone from the same denomination within 3 weeks.”',
-    card3:'“I thought I knew all possible candidates around my network, but it is not true.”',
-    langBtn:'KO'
-  }
-};
-let lang = localStorage.getItem('lang') || 'ko';
-const ids = {title:'heroTitle',sub:'heroSub',name:'nameInput',email:'emailInput',city:'cityInput',submit:'submitBtn',thanks:'thanks',error:'error',social:'socialTitle',c1:'card1',c2:'card2',c3:'card3'};
-function applyLang(){
-  const t = TEXT[lang];
-  document.getElementById('heroTitle').innerHTML=t.heroTitle;
-  document.getElementById('heroSub').textContent=t.heroSub;
-  document.getElementById('nameInput').placeholder=t.namePh;
-  document.getElementById('emailInput').placeholder=t.emailPh;
-  document.getElementById('city-input').placeholder=t.cityPh;
-  document.getElementById('submitBtn').textContent=t.submit;
-  document.getElementById('thanks').textContent=t.thanks;
-  document.getElementById('error').textContent=t.error;
-  document.getElementById('socialTitle').textContent=t.socialTitle;
-  document.getElementById('card1').textContent=t.card1;
-  document.getElementById('card2').textContent=t.card2;
-  document.getElementById('card3').textContent=t.card3;
-  document.getElementById('langToggle').textContent=t.langBtn;
-}
-applyLang();
-document.getElementById('langToggle').addEventListener('click',()=>{
-  lang=lang==='ko'?'en':'ko';
-  localStorage.setItem('lang',lang);
-  applyLang();
-});
-
-// ====== Theme Toggle ======
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-let theme = localStorage.getItem('theme') || (prefersDark?'dark':'light');
-if(theme==='dark') document.body.classList.add('dark');
-document.getElementById('themeToggle').textContent = theme==='dark'?'☀️':'🌙';
-document.getElementById('themeToggle').addEventListener('click',()=>{
-  theme = theme==='dark'?'light':'dark';
-  document.body.classList.toggle('dark');
-  localStorage.setItem('theme',theme);
-  document.getElementById('themeToggle').textContent = theme==='dark'?'☀️':'🌙';
-});
 
 // ====== NEARBY COUNT ======
 const cityInput = document.getElementById('city-input');
 const countInfo = document.getElementById('count-info');
 function updateCountDisplay(city){
-  const cityCap = city.charAt(0).toUpperCase()+city.slice(1).toLowerCase();
+  const cityCap = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
   const count = countsMap[cityCap] ?? Math.floor(Math.random()*6)+3;
-  countInfo.textContent = TEXT[lang].count(count,cityCap);
-  countInfo.style.display='block';
+  countInfo.textContent = `현재 ${count}명의 2세 크리스천이 ${cityCap}에서 파트너를 기다리고 있어요`;
+  countInfo.style.display = 'block';
 }
-cityInput.addEventListener('blur',e=>{if(e.target.value.trim().length>1)updateCountDisplay(e.target.value.trim());});
+cityInput.addEventListener('blur', (e) => {if(e.target.value.trim().length>1){updateCountDisplay(e.target.value.trim());}});
 
 // ====== FORM SUBMIT ======
 const form = document.getElementById('waitlist-form');
 const thanks = document.getElementById('thanks');
 const errorMsg = document.getElementById('error');
-form.addEventListener('submit',async e=>{
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const formData=new FormData(form);
+  const formData = new FormData(form);
   try{
-    const r=await fetch(ENDPOINT,{method:'POST',body:formData,headers:{'Accept':'application/json'}});
-    if(r.ok){form.style.display='none';errorMsg.style.display='none';thanks.style.display='block';}
-    else throw new Error();
-  }catch(err){errorMsg.style.display='block';}
+    const res = await fetch(ENDPOINT,{method:'POST',body:formData,headers:{'Accept':'application/json'}});
+    if(res.ok){form.style.display='none';errorMsg.style.display='none';thanks.style.display='block';}
+    else throw new Error('Bad');
+  }catch(err){console.error(err);errorMsg.style.display='block';}
 });
 
-// ====== Intersection Observer ======
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('show');});
-},{threshold:.2});
-document.querySelectorAll('.card').forEach(c=>observer.observe(c));
+// ====== INTERSECTION OBSERVER ======
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.2});
+document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 </script>
 </body>
 </html>
