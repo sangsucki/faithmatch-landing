@@ -1,4 +1,7 @@
 {
-  "framework": null,
-  "outputDirectory": "public"
+  "projectSettings": { "framework": null },
+  "build": {
+    "env": { "NEXT_PUBLIC_FORM_ENDPOINT": "@NEXT_PUBLIC_FORM_ENDPOINT" }
+  },
+  "rewrites": []
 }
